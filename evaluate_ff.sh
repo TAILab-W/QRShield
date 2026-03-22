@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -e
 
-# 模型与数据
+# model and data
 ROOT_DIR="/root/code/data"
 BENCHMARK_BASE_MODEL_PATH="${ROOT_DIR}/pretrained_model/stable-diffusion-2-1-base"
 ARTIST_DIR="${ROOT_DIR}/artist_data/Vincent_van_Gogh"
 POISON_DATA_DIR="${ARTIST_DIR}/poison"
 
 
-# 输出目录
+# output directory
 POISONED_MODEL_DIR="${ROOT_DIR}/finetuned_model"
 FF_GENERATED_POISON_IMG_DIR="${ROOT_DIR}/generated_images/Vincent_van_Gogh"
 
 ############################
-#        开始执行
+#        start execution
 ############################
 
 echo "===== Step 1: Full Finetune poisoning ====="

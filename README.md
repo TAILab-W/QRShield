@@ -34,22 +34,23 @@ QRShield is an efficient protection framework against AI art plagiarism, designe
 Follow these steps to set up the environment:
 
 1. **Download the Pretrained Model:**
-   https://huggingface.co/Manojb/stable-diffusion-2-1-base 
+   https://huggingface.co/Manojb/stable-diffusion-2-1-base
    Place the downloaded model folder into `data/pretrained_model/`.
 
 2. **Install Dependencies:**
-   - Navigate to the `code` directory and run:
+   - Navigate to the `QRShield` directory and run:
      ```bash
+     conda create -n QRShield python=3.9 -y
+     conda activate QRShield
      pip install -r requirements.txt
      ```
-
 
 ## Quick Run
 
 To generate adversarial examples from clean images using QRShield, follow the steps below (using Vincent van Gogh as an example):
 
-1. **Run the Poisoning Script:**
-   - Execute the following command in the `code` directory:
+   **Run the Poisoning Script:**
+   - Execute the following command in the `QRShield` directory:
      ```bash
      python poisoning.py \
        --pretrained_model data/pretrained_model/stable-diffusion-2-1-base \
@@ -69,13 +70,16 @@ To generate adversarial examples from clean images using QRShield, follow the st
 
 To evaluate the impact of adversarial samples, we provide a pipeline for full fine-tuning using adversarial examples (using Vincent van Gogh as an example). After fine-tuning, the model can generate new images reflecting the effect of the adversarial perturbations.
 
-1. In the `code` directory, run:
+   In the `QRShield` directory, run:
    ```bash
    chmod +x evaluate_ff.sh
    ./evaluate_ff.sh
+   ```
 
-The fine-tuned model will be saved under `data/finetuned_model/`.
-Generated images will be stored in `data/generated_images/`.
+  > **Note**: Before running, ensure the script uses Unix line endings (`dos2unix evaluate_ff.sh`) and set `ROOT_DIR` to your actual data path.
+
+   The fine-tuned model will be saved under `data/finetuned_model/`.  
+   Generated images will be stored in `data/generated_images/`.
 
 **Generate Results:**
 
@@ -115,7 +119,7 @@ For more details on our work, please refer to the supplementary material: [Suppl
 
 
 ## Citation:
-If you find this work useful, please cite our paper:
+If you find our work useful, please cite our paper:
 
 ```
 @inproceedings{mo2026qrshield,
